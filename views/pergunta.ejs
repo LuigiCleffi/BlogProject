@@ -1,0 +1,33 @@
+<%- include('./partials/header') %>
+<div class="container mt-3">
+
+    <article class="card mb-3">
+        <div class="card-body">
+            <h3 class="card-title">
+                <%=pergunta.titulo%>
+            </h3>
+            <p class="text-muted"><%=pergunta.descricao%></p>
+        </div>
+        <div class="card-footer">
+            <div class="resposta">
+                <form method="post" action="/responder">
+                    <label class="label" for="questionAnswer"><h3>Resposta :</h3></label>
+                    <textarea type="text" class="form-control questionAnswer" id="questionAnswer" name="questionAnswer"></textarea>
+                    <input type="hidden" name="questionId" value="<%=pergunta.id%>">
+                    <button class="btn btn-dark mt-3" type="submit">Responder</button>
+                </form>
+            </div>
+        </div>
+    </article>
+    <hr>
+    <h3>Respostas</h3>
+    <hr>
+    <% respostas.forEach(resposta =>{ %>
+        <div class="card mb-2">
+            <div class="card-body">
+                <h4 class="card-title"><%= resposta.corpo %></h4>
+            </div>
+        </div>
+    <%})%>
+</div>
+    <%- include("./partials/footer") %>
